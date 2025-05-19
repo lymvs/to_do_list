@@ -1,0 +1,14 @@
+# Ignore compiled binaries
+bin/
+*.o
+*.out
+*.exe
+
+# Ignore build artifacts
+build/
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+*.swp
+*~
