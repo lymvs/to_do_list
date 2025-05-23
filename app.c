@@ -1,7 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main() {
+#include "read_file.h"
+
+const size_t dir_size = 512;
+
+int main()
+{
     int n;
+
+    char *filepath = get_filepath(dir_size);
+    printf("%s", filepath);
 
     printf("To-Do List options:\n");
     printf("1. Add task.\n");
@@ -12,6 +21,8 @@ int main() {
     printf("Please select an option [1-4] to proceed.\n");
     scanf("%d", &n);
     printf("%d", n);
+
+    free(filepath);
 
     return 0;
 }
