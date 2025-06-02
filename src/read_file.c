@@ -37,7 +37,6 @@ int check_app_folder(const char *path)
         status = mkdir(path, 0755);
         if (status == 0)
         {
-            printf("Directory '%s' created successfully.\n", path);
             dir = opendir(path);
             if (dir == NULL) {
                 printf("Unable to create directory. Please check permissions.\n");
@@ -52,7 +51,10 @@ int check_app_folder(const char *path)
     }
     while ((entry = readdir(dir)) != NULL)
     {
-        printf("%s\n", entry->d_name);
+        if (strcmp(entry->d_name, ".") && strcmp(entry->d_name, ".."))
+        {
+            printf("%s\n", entry->d_name);
+        }
     }
     closedir(dir);
     return 0;

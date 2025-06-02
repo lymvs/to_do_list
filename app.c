@@ -10,7 +10,6 @@ int main()
     int n;
 
     char *filepath = get_filepath(dir_size);
-    printf("%s", filepath);
     check_app_folder(filepath);
 
     printf("To-Do List options:\n");
