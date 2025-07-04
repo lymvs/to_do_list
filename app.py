@@ -1,20 +1,17 @@
 import argparse
 
-from src.constants import ARGS_DICT
+from src.parser import initiate_parser
+from src.positional_args import (
+    add_task,
+)
 
 
 def main():
-    # read user's command
-    parser = argparse.ArgumentParser()
+    args = initiate_parser()
 
-    # List argument
-    for key, value in ARGS_DICT.items():
-        parser.add_argument(key, help=value)
+    if args.command == "add":
+        tasks = add_task(args)
 
-    args = parser.parse_args()
-    # if command is invalid, ask user to give a valid one and print available options
-    # execute command
-    # print back to user a response
 
 
 if __name__ == "__main__":
