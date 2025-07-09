@@ -1,3 +1,5 @@
+"""Configuration for the Bootstodo application."""
+
 POSITIONAL_ARGS = {
     "list": "List all tasks",
     "add": "Add a task",
@@ -27,3 +29,5 @@ JSON_FORMAT = {
     "due_date": "[Optional] Specify due date [yyyy-mm-dd]",
     "completed": "[Optional] False by default",
 }
+
+TAB_LENGTH = "20"

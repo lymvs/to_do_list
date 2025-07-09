@@ -1,15 +1,17 @@
+"""Initiate a parser for the Bootstodo application."""
 import argparse
 
+from src.arguments import (
+    add_args,
+    complete_args,
+    delete_args,
+    # edit_args,
+    list_args,
+)
 from src.config import (
     PROGRAM_DESC,
     PROGRAM_EPILOG,
     PROGRAM_NAME,
-)
-from src.helpers import (
-    valid_date,
-)
-from src.arguments import (
-    add_add_args,
 )
 
 
@@ -31,13 +33,18 @@ def initiate_parser() -> argparse.Namespace:
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
     parser_add = subparsers.add_parser("add", help="Add a new task")
-    parser_add = add_add_args(parser_add)
+    parser_add = add_args(parser_add)
 
-    parser_edit = subparsers.add_parser("edit", help="Edit a task")
-
+    # parser_edit = subparsers.add_parser("edit", help="Edit a task")
+    # parser_edit = edit_args(parser_edit)
 
     parser_list = subparsers.add_parser("list", help="List all tasks")
+    parser_list = list_args(parser_list)
+
     parser_delete = subparsers.add_parser("delete", help="Delete a task")
+    parser_delete = delete_args(parser_delete)
+
     parser_complete = subparsers.add_parser("complete", help="Mark a task as completed")
+    parser_complete = complete_args(parser_complete)
 
     return parser.parse_args()
