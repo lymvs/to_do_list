@@ -16,6 +16,18 @@ First, clone the repository and install the package:
 ```sh
 git clone https://github.com/lymvs/to_do_list.git
 cd to_do_list
+```
+
+It is recommended to use a virtual environment:
+
+```sh
+python -m venv .venv
+source .venv/bin/activate
+```
+
+Then install the package:
+
+```sh
 pip install .
 ```
 
