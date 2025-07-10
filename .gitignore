@@ -1,2 +1,5 @@
 src/__pycache__/
 ruff.toml
+build/
+dist/
+*.egg-info/

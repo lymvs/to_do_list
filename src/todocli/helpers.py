@@ -3,7 +3,7 @@ import argparse
 import datetime
 import os
 
-from src.config import FILE_NAME
+from .config import FILE_NAME
 
 
 def valid_date(s: str) -> datetime.datetime:

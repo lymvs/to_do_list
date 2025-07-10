@@ -2,10 +2,11 @@
 import argparse
 import json
 import os
-from datetime import datetime
 
-from src.config import TAB_LENGTH
-from src.helpers import generate_file_path
+from tabulate import tabulate
+
+from .config import HEADERS
+from .helpers import generate_file_path
 
 
 def list_tasks(args: argparse.Namespace) -> str:
@@ -34,14 +35,16 @@ def list_tasks(args: argparse.Namespace) -> str:
 
     task_list = []
     for task in tasks:
-        dt = datetime.fromisoformat(task["due_date"]).strftime("%Y-%m-%d %H:%M:%S") if task["due_date"] else "No due date"
-        task_info = f"{task['name']:<{TAB_LENGTH}} | {task['priority']:<{TAB_LENGTH}} | {dt:<{TAB_LENGTH}} | {'Yes' if task['completed'] else 'No':<{TAB_LENGTH}} | {task['description'] if task['description'] else 'No description'}"
-        task_list.append(task_info)
+        task_list.append(list(task.values()))
 
+    # If a limit is specified, slice the tasks list
     if args.limit:
         task_list = task_list[:args.limit]
 
-    return "\n".join(task_list) if task_list else "No tasks found."
+    # Prepare the tasks for tabulation
+    table = tabulate(task_list, headers=HEADERS, tablefmt="github")
+
+    return table if tasks else "No tasks found."
 
 
 def add_task(args: argparse.Namespace) -> str:
